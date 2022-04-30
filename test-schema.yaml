@@ -25,8 +25,8 @@ paths:
 components:
   parameters:
     Pagination:
-      in: query
       name: page
+      in: query
       required: false
       schema:
         type: object
