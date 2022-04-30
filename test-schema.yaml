@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: $ref issue demo
+  version: 0.0.1
+  description: Show issue with #/components/parameters reference
+servers:
+  - url: http://localhost:5000
+paths:
+  /test:
+    get:
+      summary: test
+      description: Returns a list
+      parameters:
+        - $ref: '#/components/parameters/Pagination'
+      responses:
+        '200':
+          description: list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+components:
+  parameters:
+    Pagination:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: object
+        properties:
+          page.start:
+            type: integer
+            format: int64
+            example: 1
+          page.limit:
+            type: integer
+            format: int64
+            default: 25
